@@ -400,16 +400,6 @@ export default function Home() {
                     Contact
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="transition hover:text-accent">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="transition hover:text-accent">
-                    Case Studies
-                  </a>
-                </li>
               </ul>
             </div>
           </div>
