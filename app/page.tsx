@@ -171,10 +171,20 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="space-y-6 text-center">
-              <p className="text-sm uppercase tracking-[0.4rem] text-accent">
+            <div className="space-y-8 text-center">
+              <motion.p 
+                className="bg-gradient-to-r from-accent to-primary bg-clip-text text-2xl font-bold uppercase tracking-[0.3rem] text-transparent sm:text-3xl lg:text-4xl"
+                animate={{
+                  opacity: [0.8, 1, 0.8],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
                 Connecting Your Operations
-              </p>
+              </motion.p>
               <h2 className="mx-auto max-w-4xl text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
                 Modern IT Solutions for Business Growth
               </h2>
