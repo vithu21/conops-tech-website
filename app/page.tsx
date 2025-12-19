@@ -189,11 +189,113 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col gap-20 px-4 py-16 lg:px-8">
           {/* Hero Section */}
           <motion.section 
-            className="space-y-10"
+            className="relative space-y-10"
             initial="hidden"
             animate="visible"
             variants={fadeIn}
           >
+            {/* Hero Background Animations */}
+            <div className="absolute inset-0 -z-10 overflow-hidden">
+              {/* Animated Gradient Waves */}
+              <motion.div
+                className="absolute -top-20 left-1/2 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-r from-primary/30 to-accent/30 blur-[100px]"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <motion.div
+                className="absolute top-10 left-1/2 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-gradient-to-l from-accent/30 to-blue-500/30 blur-[100px]"
+                animate={{
+                  scale: [1.2, 1, 1.2],
+                  opacity: [0.4, 0.6, 0.4],
+                }}
+                transition={{
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1,
+                }}
+              />
+              
+              {/* Animated Circles */}
+              <motion.div
+                className="absolute left-[20%] top-[30%] h-40 w-40 rounded-full border-2 border-primary/20"
+                animate={{
+                  scale: [1, 1.5, 1],
+                  opacity: [0.2, 0.5, 0.2],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <motion.div
+                className="absolute right-[20%] top-[40%] h-60 w-60 rounded-full border-2 border-accent/20"
+                animate={{
+                  scale: [1, 1.8, 1],
+                  opacity: [0.2, 0.6, 0.2],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 2,
+                }}
+              />
+              
+              {/* Animated Lines */}
+              {[...Array(5)].map((_, i) => (
+                <motion.div
+                  key={`line-${i}`}
+                  className="absolute h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+                  style={{
+                    width: '100%',
+                    top: `${20 + i * 15}%`,
+                  }}
+                  animate={{
+                    x: ['-100%', '100%'],
+                    opacity: [0, 0.5, 0],
+                  }}
+                  transition={{
+                    duration: 8 + i * 2,
+                    repeat: Infinity,
+                    ease: "linear",
+                    delay: i * 0.5,
+                  }}
+                />
+              ))}
+              
+              {/* Floating Orbs */}
+              {[...Array(6)].map((_, i) => (
+                <motion.div
+                  key={`orb-${i}`}
+                  className="absolute h-3 w-3 rounded-full bg-white/30"
+                  style={{
+                    left: `${15 + i * 15}%`,
+                    top: `${30 + (i % 3) * 20}%`,
+                  }}
+                  animate={{
+                    y: [0, -50, 0],
+                    opacity: [0.2, 1, 0.2],
+                    scale: [1, 1.5, 1],
+                  }}
+                  transition={{
+                    duration: 4 + i,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: i * 0.3,
+                  }}
+                />
+              ))}
+            </div>
+            
             <div className="flex flex-col items-center gap-6 text-center">
               <motion.div 
                 className="flex h-32 w-32 items-center justify-center rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-sm"
