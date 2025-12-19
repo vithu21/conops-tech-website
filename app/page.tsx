@@ -194,103 +194,117 @@ export default function Home() {
             animate="visible"
             variants={fadeIn}
           >
-            {/* Hero Background Animations */}
+            {/* Hero Background Animations - Modern Style */}
             <div className="absolute inset-0 -z-10 overflow-hidden">
-              {/* Animated Gradient Waves */}
+              {/* Large Morphing Blob */}
               <motion.div
-                className="absolute -top-20 left-1/2 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-r from-primary/30 to-accent/30 blur-[100px]"
+                className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2"
                 animate={{
+                  rotate: [0, 360],
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              >
+                <div className="h-full w-full rounded-[40%] bg-gradient-to-br from-primary/25 via-accent/20 to-blue-500/25 blur-[80px]" />
+              </motion.div>
+              
+              {/* Rotating Geometric Shapes */}
+              <motion.div
+                className="absolute left-[15%] top-[25%] h-64 w-64"
+                animate={{
+                  rotate: [0, 360],
                   scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.5, 0.3],
                 }}
                 transition={{
-                  duration: 8,
+                  duration: 15,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-              />
+              >
+                <div className="h-full w-full bg-gradient-to-tr from-primary/20 to-transparent blur-2xl" 
+                     style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
+              </motion.div>
+              
               <motion.div
-                className="absolute top-10 left-1/2 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-gradient-to-l from-accent/30 to-blue-500/30 blur-[100px]"
+                className="absolute right-[15%] top-[35%] h-72 w-72"
                 animate={{
+                  rotate: [360, 0],
                   scale: [1.2, 1, 1.2],
-                  opacity: [0.4, 0.6, 0.4],
                 }}
                 transition={{
-                  duration: 10,
+                  duration: 18,
                   repeat: Infinity,
                   ease: "easeInOut",
-                  delay: 1,
                 }}
-              />
+              >
+                <div className="h-full w-full rounded-full bg-gradient-to-bl from-accent/20 to-transparent blur-2xl" />
+              </motion.div>
               
-              {/* Animated Circles */}
-              <motion.div
-                className="absolute left-[20%] top-[30%] h-40 w-40 rounded-full border-2 border-primary/20"
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.2, 0.5, 0.2],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-              <motion.div
-                className="absolute right-[20%] top-[40%] h-60 w-60 rounded-full border-2 border-accent/20"
-                animate={{
-                  scale: [1, 1.8, 1],
-                  opacity: [0.2, 0.6, 0.2],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 2,
-                }}
-              />
-              
-              {/* Animated Lines */}
-              {[...Array(5)].map((_, i) => (
+              {/* Pulse Rings */}
+              {[...Array(3)].map((_, i) => (
                 <motion.div
-                  key={`line-${i}`}
-                  className="absolute h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
-                  style={{
-                    width: '100%',
-                    top: `${20 + i * 15}%`,
-                  }}
+                  key={`ring-${i}`}
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                   animate={{
-                    x: ['-100%', '100%'],
-                    opacity: [0, 0.5, 0],
+                    scale: [0.8, 2.5],
+                    opacity: [0.4, 0],
                   }}
                   transition={{
-                    duration: 8 + i * 2,
+                    duration: 4,
                     repeat: Infinity,
-                    ease: "linear",
-                    delay: i * 0.5,
+                    ease: "easeOut",
+                    delay: i * 1.3,
+                  }}
+                >
+                  <div className="h-[400px] w-[400px] rounded-full border-2 border-primary/30" />
+                </motion.div>
+              ))}
+              
+              {/* Diagonal Flowing Lines */}
+              {[...Array(4)].map((_, i) => (
+                <motion.div
+                  key={`diagonal-${i}`}
+                  className="absolute h-[600px] w-px bg-gradient-to-b from-transparent via-accent/20 to-transparent"
+                  style={{
+                    left: `${25 + i * 20}%`,
+                    top: '-10%',
+                    transform: 'rotate(15deg)',
+                  }}
+                  animate={{
+                    opacity: [0, 0.6, 0],
+                    y: [0, 100],
+                  }}
+                  transition={{
+                    duration: 5 + i,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: i * 0.8,
                   }}
                 />
               ))}
               
-              {/* Floating Orbs */}
-              {[...Array(6)].map((_, i) => (
+              {/* Particle Grid */}
+              {[...Array(20)].map((_, i) => (
                 <motion.div
-                  key={`orb-${i}`}
-                  className="absolute h-3 w-3 rounded-full bg-white/30"
+                  key={`particle-${i}`}
+                  className="absolute h-1 w-1 rounded-full bg-white/40"
                   style={{
-                    left: `${15 + i * 15}%`,
-                    top: `${30 + (i % 3) * 20}%`,
+                    left: `${(i * 5 + 10) % 90}%`,
+                    top: `${20 + (i % 5) * 15}%`,
                   }}
                   animate={{
-                    y: [0, -50, 0],
-                    opacity: [0.2, 1, 0.2],
-                    scale: [1, 1.5, 1],
+                    scale: [0, 2, 0],
+                    opacity: [0, 0.8, 0],
                   }}
                   transition={{
-                    duration: 4 + i,
+                    duration: 3 + (i % 3),
                     repeat: Infinity,
                     ease: "easeInOut",
-                    delay: i * 0.3,
+                    delay: (i * 0.2) % 3,
                   }}
                 />
               ))}
