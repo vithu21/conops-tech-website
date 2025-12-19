@@ -88,8 +88,47 @@ export default function Home() {
   return (
     <>
       <main className="relative isolate min-h-screen overflow-hidden">
+        {/* Animated Background */}
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,.3),_transparent_55%)]" />
         <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,.25),transparent_45%)]" />
+        
+        {/* Floating Animated Shapes */}
+        <motion.div
+          className="absolute left-[10%] top-[20%] h-72 w-72 rounded-full bg-primary/10 blur-3xl"
+          animate={{
+            y: [0, 50, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute right-[15%] top-[40%] h-96 w-96 rounded-full bg-accent/10 blur-3xl"
+          animate={{
+            y: [0, -50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-[20%] left-[20%] h-80 w-80 rounded-full bg-blue-500/10 blur-3xl"
+          animate={{
+            y: [0, 40, 0],
+            x: [0, 30, 0],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
         
         <div className="mx-auto flex max-w-7xl flex-col gap-20 px-4 py-16 lg:px-8">
           {/* Hero Section */}
@@ -99,44 +138,61 @@ export default function Home() {
             animate="visible"
             variants={fadeIn}
           >
-            <div className="flex flex-wrap items-center gap-4">
-              <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-white/10 backdrop-blur-sm">
+            <div className="flex flex-col items-center gap-6 text-center">
+              <motion.div 
+                className="flex h-32 w-32 items-center justify-center rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-sm"
+                animate={{
+                  boxShadow: [
+                    "0 0 20px rgba(99, 102, 241, 0.3)",
+                    "0 0 40px rgba(16, 185, 129, 0.4)",
+                    "0 0 20px rgba(99, 102, 241, 0.3)",
+                  ],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
                 <Image
                   src="/logo-2.png"
-                  alt="Conops Tech logo"
-                  width={64}
-                  height={64}
-                  className="h-16 w-16 object-contain"
+                  alt="ConOps Tech logo"
+                  width={96}
+                  height={96}
+                  className="h-24 w-24 object-contain"
                   priority
                 />
-              </div>
-              <p className="text-xs font-semibold uppercase tracking-[0.4rem] text-white/60">
-                ConOps Tech · IT Services & Solutions
+              </motion.div>
+              <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+                ConOps Tech
+              </h1>
+              <p className="text-sm uppercase tracking-[0.4rem] text-white/60">
+                IT Services & Solutions
               </p>
             </div>
             
-            <div className="space-y-6">
+            <div className="space-y-6 text-center">
               <p className="text-sm uppercase tracking-[0.4rem] text-accent">
-                Connection Your Operations
+                Connecting Your Operations
               </p>
-              <h1 className="max-w-4xl text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+              <h2 className="mx-auto max-w-4xl text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
                 Modern IT Solutions for Business Growth
-              </h1>
-              <p className="max-w-3xl text-xl text-white/80">
+              </h2>
+              <p className="mx-auto max-w-3xl text-lg text-white/80 sm:text-xl">
                 We deliver cloud infrastructure, automation, and strategic IT services that help your business scale efficiently.
               </p>
             </div>
             
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-accent px-8 py-4 text-base font-semibold uppercase tracking-[0.2rem] text-white shadow-lg transition hover:opacity-90 hover:shadow-xl"
+                className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-accent px-8 py-4 text-base font-semibold uppercase tracking-[0.2rem] text-white shadow-lg transition hover:scale-105 hover:opacity-90 hover:shadow-xl"
               >
                 Get Started
               </a>
               <a
                 href="#services"
-                className="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-8 py-4 text-base font-semibold uppercase tracking-[0.2rem] text-white backdrop-blur-sm transition hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-8 py-4 text-base font-semibold uppercase tracking-[0.2rem] text-white backdrop-blur-sm transition hover:scale-105 hover:bg-white/10"
               >
                 Explore Services
               </a>
