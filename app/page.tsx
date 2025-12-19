@@ -194,135 +194,130 @@ export default function Home() {
             animate="visible"
             variants={fadeIn}
           >
-            {/* Hero Background Animations - Fluid Wave Style */}
+            {/* Hero Background Animations - Bold & Visible */}
             <div className="absolute inset-0 -z-10 overflow-hidden">
-              {/* Liquid Waves */}
+              {/* Large Moving Gradient Blobs */}
               <motion.div
-                className="absolute left-0 top-0 h-full w-full"
+                className="absolute h-[600px] w-[600px] rounded-full blur-[100px]"
+                style={{
+                  background: 'radial-gradient(circle, rgba(99, 102, 241, 0.5) 0%, rgba(99, 102, 241, 0.2) 50%, transparent 70%)',
+                }}
                 animate={{
-                  background: [
-                    'radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.3) 0%, transparent 50%)',
-                    'radial-gradient(circle at 80% 40%, rgba(99, 102, 241, 0.3) 0%, transparent 50%)',
-                    'radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.3) 0%, transparent 50%)',
-                  ],
+                  x: ['10%', '70%', '10%'],
+                  y: ['0%', '30%', '0%'],
+                  scale: [1, 1.2, 1],
                 }}
                 transition={{
-                  duration: 10,
+                  duration: 15,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
               />
               
               <motion.div
-                className="absolute left-0 top-0 h-full w-full"
+                className="absolute h-[500px] w-[500px] rounded-full blur-[80px]"
+                style={{
+                  background: 'radial-gradient(circle, rgba(16, 185, 129, 0.5) 0%, rgba(16, 185, 129, 0.2) 50%, transparent 70%)',
+                }}
                 animate={{
-                  background: [
-                    'radial-gradient(circle at 70% 50%, rgba(16, 185, 129, 0.25) 0%, transparent 50%)',
-                    'radial-gradient(circle at 30% 60%, rgba(16, 185, 129, 0.25) 0%, transparent 50%)',
-                    'radial-gradient(circle at 70% 50%, rgba(16, 185, 129, 0.25) 0%, transparent 50%)',
-                  ],
+                  x: ['60%', '5%', '60%'],
+                  y: ['10%', '40%', '10%'],
+                  scale: [1.2, 1, 1.2],
                 }}
                 transition={{
-                  duration: 12,
+                  duration: 18,
                   repeat: Infinity,
                   ease: "easeInOut",
-                  delay: 1,
                 }}
               />
               
-              {/* Floating Bubbles */}
-              {[...Array(8)].map((_, i) => (
+              {/* Visible Floating Shapes */}
+              {[...Array(6)].map((_, i) => (
                 <motion.div
-                  key={`bubble-${i}`}
-                  className="absolute rounded-full bg-white/5 backdrop-blur-sm"
+                  key={`shape-${i}`}
+                  className="absolute rounded-full border-2"
                   style={{
-                    width: `${80 + i * 20}px`,
-                    height: `${80 + i * 20}px`,
-                    left: `${10 + i * 12}%`,
-                    top: `${30 + (i % 3) * 20}%`,
+                    width: `${100 + i * 30}px`,
+                    height: `${100 + i * 30}px`,
+                    left: `${15 + i * 15}%`,
+                    top: `${20 + (i % 3) * 25}%`,
+                    borderColor: i % 2 === 0 ? 'rgba(99, 102, 241, 0.3)' : 'rgba(16, 185, 129, 0.3)',
+                    background: i % 2 === 0 ? 'rgba(99, 102, 241, 0.05)' : 'rgba(16, 185, 129, 0.05)',
                   }}
                   animate={{
-                    y: [0, -100, 0],
-                    x: [0, Math.sin(i) * 50, 0],
-                    scale: [1, 1.1, 1],
-                    opacity: [0.1, 0.3, 0.1],
+                    y: [0, -80, 0],
+                    x: [0, (i % 2 === 0 ? 40 : -40), 0],
+                    rotate: [0, 360],
+                    scale: [1, 1.15, 1],
                   }}
                   transition={{
-                    duration: 8 + i * 0.5,
+                    duration: 10 + i,
                     repeat: Infinity,
                     ease: "easeInOut",
-                    delay: i * 0.4,
+                    delay: i * 0.5,
                   }}
                 />
               ))}
               
-              {/* Spiral Gradient */}
+              {/* Bright Pulsing Dots */}
+              {[...Array(15)].map((_, i) => (
+                <motion.div
+                  key={`dot-${i}`}
+                  className="absolute h-3 w-3 rounded-full"
+                  style={{
+                    left: `${(i * 7 + 10) % 85}%`,
+                    top: `${(i * 13 + 15) % 70}%`,
+                    background: i % 3 === 0 ? 'rgba(99, 102, 241, 0.6)' : i % 3 === 1 ? 'rgba(16, 185, 129, 0.6)' : 'rgba(59, 130, 246, 0.6)',
+                    boxShadow: '0 0 20px currentColor',
+                  }}
+                  animate={{
+                    scale: [0.5, 1.5, 0.5],
+                    opacity: [0.4, 1, 0.4],
+                  }}
+                  transition={{
+                    duration: 3 + (i % 4),
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: i * 0.2,
+                  }}
+                />
+              ))}
+              
+              {/* Rotating Ring */}
               <motion.div
-                className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2"
+                className="absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-dashed"
                 style={{
-                  background: 'conic-gradient(from 0deg, rgba(99, 102, 241, 0.2), rgba(16, 185, 129, 0.2), transparent)',
-                  borderRadius: '50%',
-                  filter: 'blur(60px)',
+                  borderColor: 'rgba(99, 102, 241, 0.2)',
                 }}
                 animate={{
                   rotate: [0, 360],
+                  scale: [0.9, 1.1, 0.9],
                 }}
                 transition={{
-                  duration: 25,
+                  duration: 20,
                   repeat: Infinity,
                   ease: "linear",
                 }}
               />
               
-              {/* Orbiting Particles */}
-              {[...Array(12)].map((_, i) => {
-                const angle = (i * 360) / 12;
-                return (
-                  <motion.div
-                    key={`orbit-${i}`}
-                    className="absolute left-1/2 top-1/2 h-2 w-2 rounded-full bg-accent/60"
-                    animate={{
-                      x: [
-                        Math.cos((angle * Math.PI) / 180) * 200,
-                        Math.cos(((angle + 180) * Math.PI) / 180) * 200,
-                        Math.cos((angle * Math.PI) / 180) * 200,
-                      ],
-                      y: [
-                        Math.sin((angle * Math.PI) / 180) * 200,
-                        Math.sin(((angle + 180) * Math.PI) / 180) * 200,
-                        Math.sin((angle * Math.PI) / 180) * 200,
-                      ],
-                      opacity: [0.3, 0.8, 0.3],
-                    }}
-                    transition={{
-                      duration: 8,
-                      repeat: Infinity,
-                      ease: "linear",
-                      delay: i * 0.15,
-                    }}
-                  />
-                );
-              })}
-              
-              {/* Glowing Streaks */}
-              {[...Array(6)].map((_, i) => (
+              {/* Animated Waves */}
+              {[...Array(4)].map((_, i) => (
                 <motion.div
-                  key={`streak-${i}`}
-                  className="absolute h-px w-[200px] bg-gradient-to-r from-transparent via-primary/40 to-transparent"
+                  key={`wave-${i}`}
+                  className="absolute h-1 w-full"
                   style={{
-                    left: `${i * 18}%`,
-                    top: `${25 + i * 10}%`,
-                    transform: `rotate(${-20 + i * 8}deg)`,
+                    top: `${25 + i * 20}%`,
+                    background: `linear-gradient(90deg, transparent, ${i % 2 === 0 ? 'rgba(99, 102, 241, 0.4)' : 'rgba(16, 185, 129, 0.4)'}, transparent)`,
                   }}
                   animate={{
-                    x: [-100, 500],
-                    opacity: [0, 0.6, 0],
+                    x: ['-100%', '100%'],
+                    opacity: [0, 1, 0],
                   }}
                   transition={{
-                    duration: 4 + i * 0.5,
+                    duration: 5 + i,
                     repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: i * 0.7,
+                    ease: "linear",
+                    delay: i * 1.2,
                   }}
                 />
               ))}
