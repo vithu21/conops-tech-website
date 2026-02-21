@@ -165,26 +165,29 @@ export default function Home() {
         />
         
         {/* Floating Particles */}
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute h-2 w-2 rounded-full bg-white/20"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -100, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 5 + Math.random() * 5,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
+        <div suppressHydrationWarning>
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute h-2 w-2 rounded-full bg-white/20"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -100, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 5 + Math.random() * 5,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+                ease: "easeInOut",
+              }}
+              suppressHydrationWarning
+            />
+          ))}
+        </div>
         
         <div className="mx-auto flex max-w-7xl flex-col gap-20 px-4 py-16 lg:px-8">
           {/* Hero Section */}
