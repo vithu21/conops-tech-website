@@ -328,26 +328,32 @@ export default function Home() {
             
             <div className="flex flex-col items-center gap-6 text-center">
               <motion.div 
-                className="flex h-32 w-32 items-center justify-center rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-sm"
+                className="relative flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-white/5 via-white/10 to-white/5 p-4 backdrop-blur-xl border border-white/20"
                 animate={{
                   boxShadow: [
-                    "0 0 20px rgba(99, 102, 241, 0.3)",
-                    "0 0 40px rgba(16, 185, 129, 0.4)",
-                    "0 0 20px rgba(99, 102, 241, 0.3)",
+                    "0 0 40px rgba(99, 102, 241, 0.4), 0 0 80px rgba(16, 185, 129, 0.2)",
+                    "0 0 60px rgba(16, 185, 129, 0.5), 0 0 100px rgba(99, 102, 241, 0.3)",
+                    "0 0 40px rgba(99, 102, 241, 0.4), 0 0 80px rgba(16, 185, 129, 0.2)",
+                  ],
+                  borderColor: [
+                    "rgba(99, 102, 241, 0.3)",
+                    "rgba(16, 185, 129, 0.5)",
+                    "rgba(99, 102, 241, 0.3)",
                   ],
                 }}
                 transition={{
-                  duration: 3,
+                  duration: 4,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
               >
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 blur-xl" />
                 <Image
                   src="/logo-2.png"
                   alt="ConOps Tech logo"
                   width={96}
                   height={96}
-                  className="h-24 w-24 object-contain"
+                  className="relative z-10 h-24 w-24 object-contain drop-shadow-2xl"
                   priority
                 />
               </motion.div>
