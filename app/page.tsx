@@ -348,18 +348,22 @@ export default function Home() {
                 }}
               >
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 blur-xl" />
-                <Image
+        <Image
                   src="/logo-2.png"
                   alt="ConOps Tech logo"
                   width={96}
                   height={96}
                   className="relative z-10 h-24 w-24 object-contain drop-shadow-2xl"
-                  priority
-                />
+                  style={{ 
+                    mixBlendMode: 'screen',
+                    filter: 'brightness(1.2) contrast(1.1)'
+                  }}
+          priority
+        />
               </motion.div>
               <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
                 ConOps Tech
-              </h1>
+          </h1>
               <p className="text-sm uppercase tracking-[0.4rem] text-white/60">
                 IT Services & Solutions
               </p>
@@ -515,13 +519,13 @@ export default function Home() {
                   >
                     Phone · +94 75 537 3553
                   </a>
-                </div>
+        </div>
                 <div className="flex items-center gap-3">
                   <span className="inline-flex h-2 w-2 rounded-full bg-green-400" />
-                  <a 
+          <a
                     href="https://wa.me/94755373553" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
                     className="text-base transition hover:text-accent"
                   >
                     WhatsApp · +94 75 537 3553
@@ -540,8 +544,8 @@ export default function Home() {
                   <span className="inline-flex h-2 w-2 rounded-full bg-blue-400" />
                   <a 
                     href="https://www.linkedin.com/company/conops-tech/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
                     className="text-base transition hover:text-accent"
                   >
                     LinkedIn · ConOps Tech
@@ -602,7 +606,7 @@ export default function Home() {
           <div className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-white/60">
             <p>Copyright © {new Date().getFullYear()} Conops Tech. All Rights Reserved.</p>
           </div>
-        </div>
+    </div>
       </footer>
     </>
   );
