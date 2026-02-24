@@ -584,13 +584,41 @@ export default function Home() {
             {/* Company Info */}
             <div className="space-y-4 lg:col-span-2">
               <div className="flex items-center gap-3">
-                <Image
-                  src="/logo-2.png"
-                  alt="ConOps Tech"
-                  width={56}
-                  height={56}
-                  className="h-14 w-14 object-contain"
-                />
+                {/* Footer logo with premium styling matching hero */}
+                <div 
+                  className="relative flex h-14 w-14 items-center justify-center rounded-[18px] bg-gradient-to-br from-primary/10 via-transparent to-accent/10 p-2 backdrop-blur-xl"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    boxShadow: '0 4px 16px rgba(99, 102, 241, 0.2), 0 0 0 1px rgba(99, 102, 241, 0.15)',
+                  }}
+                >
+                  {/* Inner logo container */}
+                  <div 
+                    className="relative h-full w-full overflow-hidden rounded-[14px] p-1"
+                    style={{
+                      backgroundColor: '#F8F9FA',
+                      boxShadow: `
+                        inset 0 1px 2px rgba(0, 0, 0, 0.06),
+                        inset 0 -1px 1px rgba(255, 255, 255, 0.8),
+                        inset 0 0 1px rgba(0, 0, 0, 0.04),
+                        0 1px 4px rgba(0, 0, 0, 0.1),
+                        0 1px 2px rgba(0, 0, 0, 0.06)
+                      `,
+                    }}
+                  >
+                    <Image
+                      src="/logo-2.png"
+                      alt="ConOps Tech"
+                      width={56}
+                      height={56}
+                      className="h-full w-full object-contain"
+                      style={{
+                        borderRadius: 'inherit',
+                      }}
+                    />
+                  </div>
+                </div>
                 <span className="text-xl font-bold text-white">ConOps Tech</span>
               </div>
               <p className="max-w-md text-sm text-white/60">
