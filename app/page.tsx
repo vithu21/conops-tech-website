@@ -99,7 +99,7 @@ export default function Home() {
       return;
     }
 
-    // Show splash for 2 seconds
+    // Show splash for 3.5 seconds
     const timer = setTimeout(() => {
       setShowSplash(false);
       sessionStorage.setItem('splashShown', 'true');
@@ -108,7 +108,7 @@ export default function Home() {
       setTimeout(() => {
         setShowContent(true);
       }, 300);
-    }, 2000);
+    }, 3500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -133,18 +133,18 @@ export default function Home() {
             >
               {/* Splash Logo Container */}
               <div 
-                className="relative flex h-32 w-32 items-center justify-center rounded-[26px] bg-gradient-to-br from-primary/10 via-transparent to-accent/10 p-6 backdrop-blur-2xl"
+                className="relative flex h-40 w-40 items-center justify-center rounded-[32px] bg-gradient-to-br from-primary/10 via-transparent to-accent/10 p-6 backdrop-blur-2xl"
                 style={{
                   background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%)',
                   border: '1px solid rgba(255, 255, 255, 0.1)',
                   boxShadow: '0 8px 32px rgba(99, 102, 241, 0.3), 0 0 0 1px rgba(99, 102, 241, 0.2)',
                 }}
               >
-                <div className="absolute inset-0 rounded-[26px] bg-gradient-to-br from-white/5 to-white/0" />
+                <div className="absolute inset-0 rounded-[32px] bg-gradient-to-br from-white/5 to-white/0" />
                 
                 {/* Inner logo container */}
                 <div 
-                  className="relative z-10 h-24 w-24 overflow-hidden rounded-[20px] p-2"
+                  className="relative z-10 h-28 w-28 overflow-hidden rounded-[26px] p-2.5"
                   style={{
                     backgroundColor: '#F8F9FA',
                     boxShadow: `
@@ -159,8 +159,8 @@ export default function Home() {
                   <Image
                     src="/logo-2.png"
                     alt="ConOps Tech logo"
-                    width={96}
-                    height={96}
+                    width={112}
+                    height={112}
                     className="h-full w-full object-contain"
                     style={{
                       borderRadius: 'inherit',
