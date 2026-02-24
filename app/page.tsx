@@ -351,14 +351,15 @@ export default function Home() {
                 
                 {/* Enhanced inner logo container with premium styling */}
                 <div 
-                  className="relative z-10 h-28 w-28 overflow-hidden rounded-[24px] p-2"
+                  className="relative z-10 h-28 w-28 overflow-hidden rounded-[26px] p-2.5"
                   style={{
-                    backgroundColor: '#FAFAF9',
+                    backgroundColor: '#F8F9FA',
                     boxShadow: `
-                      inset 0 2px 8px rgba(0, 0, 0, 0.08),
-                      inset 0 -1px 4px rgba(0, 0, 0, 0.04),
-                      0 4px 12px rgba(0, 0, 0, 0.12),
-                      0 2px 4px rgba(0, 0, 0, 0.08)
+                      inset 0 1px 3px rgba(0, 0, 0, 0.06),
+                      inset 0 -1px 2px rgba(255, 255, 255, 0.8),
+                      inset 0 0 1px rgba(0, 0, 0, 0.04),
+                      0 2px 8px rgba(0, 0, 0, 0.1),
+                      0 1px 3px rgba(0, 0, 0, 0.06)
                     `,
                   }}
                 >
