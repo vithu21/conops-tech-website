@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import ContactForm from "../components/ContactForm";
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const services = [
   {
@@ -85,9 +86,101 @@ const fadeIn: Variants = {
 };
 
 export default function Home() {
+  const [showSplash, setShowSplash] = useState(true);
+  const [showContent, setShowContent] = useState(false);
+
+  useEffect(() => {
+    // Check if splash has been shown before
+    const splashShown = sessionStorage.getItem('splashShown');
+    
+    if (splashShown === 'true') {
+      setShowSplash(false);
+      setShowContent(true);
+      return;
+    }
+
+    // Show splash for 2 seconds
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+      sessionStorage.setItem('splashShown', 'true');
+      
+      // Small delay before showing content for smooth transition
+      setTimeout(() => {
+        setShowContent(true);
+      }, 300);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
-      <main className="relative isolate min-h-screen overflow-hidden">
+      {/* Splash Screen */}
+      <AnimatePresence>
+        {showSplash && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[#01030b]"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            <motion.div
+              className="flex flex-col items-center gap-4"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              {/* Splash Logo Container */}
+              <div 
+                className="relative flex h-32 w-32 items-center justify-center rounded-[26px] bg-gradient-to-br from-primary/10 via-transparent to-accent/10 p-6 backdrop-blur-2xl"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  boxShadow: '0 8px 32px rgba(99, 102, 241, 0.3), 0 0 0 1px rgba(99, 102, 241, 0.2)',
+                }}
+              >
+                <div className="absolute inset-0 rounded-[26px] bg-gradient-to-br from-white/5 to-white/0" />
+                
+                {/* Inner logo container */}
+                <div 
+                  className="relative z-10 h-24 w-24 overflow-hidden rounded-[20px] p-2"
+                  style={{
+                    backgroundColor: '#F8F9FA',
+                    boxShadow: `
+                      inset 0 1px 3px rgba(0, 0, 0, 0.06),
+                      inset 0 -1px 2px rgba(255, 255, 255, 0.8),
+                      inset 0 0 1px rgba(0, 0, 0, 0.04),
+                      0 2px 8px rgba(0, 0, 0, 0.1),
+                      0 1px 3px rgba(0, 0, 0, 0.06)
+                    `,
+                  }}
+                >
+                  <Image
+                    src="/logo-2.png"
+                    alt="ConOps Tech logo"
+                    width={96}
+                    height={96}
+                    className="h-full w-full object-contain"
+                    style={{
+                      borderRadius: 'inherit',
+                    }}
+                    priority
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Main Content */}
+      <motion.main 
+        className="relative isolate min-h-screen overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showContent ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+      >
         {/* Animated Background */}
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,.3),_transparent_55%)]" />
         <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,.25),transparent_45%)]" />
@@ -575,10 +668,9 @@ export default function Home() {
             <ContactForm />
           </motion.section>
         </div>
-      </main>
 
-      {/* Footer */}
-      <footer className="border-t border-white/10 bg-[#01030b]">
+        {/* Footer */}
+        <footer className="border-t border-white/10 bg-[#01030b]">
         <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {/* Company Info */}
@@ -650,7 +742,8 @@ export default function Home() {
             <p>Copyright © {new Date().getFullYear()} Conops Tech. All Rights Reserved.</p>
           </div>
         </div>
-      </footer>
+        </footer>
+      </motion.main>
     </>
   );
 }
