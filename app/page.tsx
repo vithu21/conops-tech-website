@@ -349,15 +349,31 @@ export default function Home() {
                 {/* Subtle glow background */}
                 <div className="absolute inset-0 rounded-[32px] bg-gradient-to-br from-white/5 to-white/0" />
                 
-                {/* Logo */}
-                <Image
-                  src="/logo-2.png"
-                  alt="ConOps Tech logo"
-                  width={112}
-                  height={112}
-                  className="relative z-10 h-28 w-28 object-contain"
-                  priority
-                />
+                {/* Enhanced inner logo container with premium styling */}
+                <div 
+                  className="relative z-10 h-28 w-28 overflow-hidden rounded-[24px] p-2"
+                  style={{
+                    backgroundColor: '#FAFAF9',
+                    boxShadow: `
+                      inset 0 2px 8px rgba(0, 0, 0, 0.08),
+                      inset 0 -1px 4px rgba(0, 0, 0, 0.04),
+                      0 4px 12px rgba(0, 0, 0, 0.12),
+                      0 2px 4px rgba(0, 0, 0, 0.08)
+                    `,
+                  }}
+                >
+                  <Image
+                    src="/logo-2.png"
+                    alt="ConOps Tech logo"
+                    width={112}
+                    height={112}
+                    className="h-full w-full object-contain"
+                    style={{
+                      borderRadius: 'inherit',
+                    }}
+                    priority
+                  />
+                </div>
               </motion.div>
               <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
                 ConOps Tech
