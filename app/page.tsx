@@ -620,6 +620,50 @@ export default function Home() {
             </motion.div>
           </motion.section>
 
+          {/* Technology Showcase Section */}
+          <motion.section
+            className="relative space-y-8 overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 p-8 backdrop-blur-xl lg:p-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+          >
+            {/* Background glow effects */}
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_50%,rgba(99,102,241,0.15),transparent_60%)]" />
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_70%_50%,rgba(16,185,129,0.1),transparent_60%)]" />
+            
+            <div className="space-y-6 text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.4rem] text-accent">Our Technology</p>
+              <h2 className="text-3xl font-bold text-white sm:text-4xl">
+                Modern Digital Infrastructure
+              </h2>
+              <p className="mx-auto max-w-3xl text-base text-white/80 sm:text-lg">
+                Cloud computing, data management, and AI-driven solutions that power your business forward.
+              </p>
+            </div>
+            
+            {/* Showcase Image Container */}
+            <motion.div
+              className="relative mx-auto max-w-5xl"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
+                <Image
+                  src="/showcase-image.png"
+                  alt="ConOps Tech - Cloud Computing and Digital Infrastructure"
+                  width={1200}
+                  height={800}
+                  className="relative z-10 w-full rounded-xl object-cover"
+                  priority={false}
+                />
+              </div>
+            </motion.div>
+          </motion.section>
+
           {/* Contact Section */}
           <motion.section
             id="contact"
