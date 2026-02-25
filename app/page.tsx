@@ -37,6 +37,12 @@ const services = [
     description:
       "24/7 technical support and maintenance for your IT infrastructure.",
   },
+  {
+    icon: "🤖",
+    title: "AI Driven Solutions",
+    description:
+      "Intelligent automation and AI-powered systems to transform your business operations.",
+  },
 ];
 
 const features = [
