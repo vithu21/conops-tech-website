@@ -4,6 +4,7 @@ import Image from "next/image";
 import ContactForm from "../components/ContactForm";
 import { motion, type Variants, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { ShieldCheck, Zap, Headphones, TrendingUp } from "lucide-react";
 
 const services = [
   {
@@ -42,18 +43,22 @@ const features = [
   {
     title: "Proven Expertise",
     description: "Mission-critical IT solutions across diverse industries.",
+    icon: ShieldCheck,
   },
   {
     title: "Agile Approach",
     description: "Fast iterations and transparent communication.",
+    icon: Zap,
   },
   {
     title: "24/7 Support",
     description: "Round-the-clock technical assistance.",
+    icon: Headphones,
   },
   {
     title: "Scalable Growth",
     description: "Solutions designed to grow with your business.",
+    icon: TrendingUp,
   },
 ];
 
@@ -517,42 +522,51 @@ export default function Home() {
 
           {/* Why Choose Us */}
           <motion.section 
-            className="space-y-10"
+            className="relative space-y-10"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
           >
             <div className="space-y-4 text-center">
-              <p className="text-xs uppercase tracking-[0.4rem] text-accent">Why Choose Us</p>
-              <h2 className="text-3xl font-bold text-white sm:text-4xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.4rem] text-accent">Why Choose Us</p>
+              <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
                 Excellence in IT Solutions
               </h2>
-              <p className="mx-auto max-w-3xl text-lg text-white/70">
+              <p className="mx-auto max-w-3xl text-base text-white/80 sm:text-lg">
                 Expert team delivering measurable results for your business.
               </p>
             </div>
             
+            {/* Radial glow behind cards */}
+            <div className="absolute left-1/2 top-1/2 -z-10 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-primary/10 via-accent/5 to-transparent blur-3xl" />
+            
             <motion.div 
-              className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+              className="relative grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
-              {features.map((feature) => (
-                <motion.article
-                  key={feature.title}
-                  variants={fadeInUp}
-                  className="flex flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:border-accent/40 hover:bg-white/10"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20">
-                    <div className="h-2 w-2 rounded-full bg-accent" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-white">{feature.title}</h3>
-                  <p className="text-sm leading-relaxed text-white/70">{feature.description}</p>
-                </motion.article>
-              ))}
+              {features.map((feature) => {
+                const IconComponent = feature.icon;
+                return (
+                  <motion.article
+                    key={feature.title}
+                    variants={fadeInUp}
+                    className="group relative flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-accent/40 hover:bg-white/10 hover:shadow-[0_8px_32px_rgba(99,102,241,0.2)]"
+                  >
+                    {/* Icon with glassmorphism background */}
+                    <div className="relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 via-accent/15 to-primary/10 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-accent/20">
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/10 to-transparent" />
+                      <IconComponent className="relative z-10 h-8 w-8 text-accent transition-all duration-300 group-hover:text-accent group-hover:drop-shadow-lg" />
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-white">{feature.title}</h3>
+                    <p className="text-sm leading-relaxed text-white/75">{feature.description}</p>
+                  </motion.article>
+                );
+              })}
             </motion.div>
           </motion.section>
 
