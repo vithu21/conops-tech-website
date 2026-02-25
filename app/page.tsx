@@ -755,7 +755,7 @@ export default function Home() {
 
           {/* Copyright */}
           <div className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-white/60">
-            <p>Copyright © {new Date().getFullYear()} Conops Tech. All Rights Reserved.</p>
+            <p>Copyright © {new Date().getFullYear()} ConOps Tech. All Rights Reserved.</p>
           </div>
         </div>
         </footer>
