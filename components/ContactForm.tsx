@@ -37,8 +37,13 @@ export default function ContactForm() {
           phone: values.phone,
           message: values.message,
           subject: `New inquiry from ${values.name} - ConOps Tech`,
+          from_name: "ConOps Tech Website",
         }),
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
       const result = await response.json();
 
@@ -46,10 +51,24 @@ export default function ContactForm() {
         setStatus("✅ Message sent successfully! We'll respond within 24 hours.");
         setValues({ name: "", email: "", phone: "", message: "" });
       } else {
-        setStatus("❌ Failed to send message. Please try again or email us directly.");
+        console.error("Web3Forms error:", result);
+        // Fallback to mailto
+        const subject = encodeURIComponent(`New inquiry from ${values.name} - ConOps Tech`);
+        const body = encodeURIComponent(
+          `Name: ${values.name}\nEmail: ${values.email}\nPhone: ${values.phone}\n\nMessage:\n${values.message}`
+        );
+        window.location.href = `mailto:mtvvithushan@gmail.com?subject=${subject}&body=${body}`;
+        setStatus("⚠️ Opening your email client. Please send the message manually.");
       }
     } catch (error) {
-      setStatus("❌ Failed to send message. Please try again or email us directly.");
+      console.error("Form submission error:", error);
+      // Fallback to mailto on error
+      const subject = encodeURIComponent(`New inquiry from ${values.name} - ConOps Tech`);
+      const body = encodeURIComponent(
+        `Name: ${values.name}\nEmail: ${values.email}\nPhone: ${values.phone}\n\nMessage:\n${values.message}`
+      );
+      window.location.href = `mailto:mtvvithushan@gmail.com?subject=${subject}&body=${body}`;
+      setStatus("⚠️ Opening your email client. Please send the message manually.");
     } finally {
       setIsSubmitting(false);
     }
