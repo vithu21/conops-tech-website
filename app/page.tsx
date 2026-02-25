@@ -679,10 +679,6 @@ export default function Home() {
                     LinkedIn · ConOps Tech
                   </a>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-2 w-2 rounded-full bg-white/40" />
-                  <p className="text-base">Response within 24 hours</p>
-                </div>
               </div>
             </div>
             <ContactForm />
