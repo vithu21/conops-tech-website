@@ -686,78 +686,254 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <footer className="border-t border-white/10 bg-[#01030b]">
-        <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Company Info */}
-            <div className="space-y-4 lg:col-span-2">
-              <div className="flex items-center gap-3">
-                {/* Footer logo with premium styling matching hero */}
-                <div 
-                  className="relative flex h-14 w-14 items-center justify-center rounded-[18px] bg-gradient-to-br from-primary/10 via-transparent to-accent/10 p-2 backdrop-blur-xl"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    boxShadow: '0 4px 16px rgba(99, 102, 241, 0.2), 0 0 0 1px rgba(99, 102, 241, 0.15)',
-                  }}
-                >
-                  {/* Inner logo container */}
-                  <div 
-                    className="relative h-full w-full overflow-hidden rounded-[14px] p-1"
-                    style={{
-                      backgroundColor: '#F8F9FA',
-                      boxShadow: `
-                        inset 0 1px 2px rgba(0, 0, 0, 0.06),
-                        inset 0 -1px 1px rgba(255, 255, 255, 0.8),
-                        inset 0 0 1px rgba(0, 0, 0, 0.04),
-                        0 1px 4px rgba(0, 0, 0, 0.1),
-                        0 1px 2px rgba(0, 0, 0, 0.06)
-                      `,
-                    }}
-                  >
-                    <Image
-                      src="/logo-2.png"
-                      alt="ConOps Tech"
-                      width={56}
-                      height={56}
-                      className="h-full w-full object-contain"
+        <footer className="relative overflow-hidden border-t border-white/10 bg-[#01030b]">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            {/* Wave Background Shapes */}
+            <div className="absolute -bottom-20 left-0 right-0 h-64">
+              <svg
+                className="absolute bottom-0 w-full"
+                viewBox="0 0 1440 320"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,133.3C672,117,768,107,864,112C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+                  fill="url(#waveGradient)"
+                  opacity="0.3"
+                />
+                <path
+                  d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,213.3C960,224,1056,224,1152,213.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+                  fill="url(#waveGradient2)"
+                  opacity="0.2"
+                />
+                <defs>
+                  <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#6366f1" stopOpacity="0.4" />
+                    <stop offset="50%" stopColor="#10b981" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.4" />
+                  </linearGradient>
+                  <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.3" />
+                    <stop offset="50%" stopColor="#6366f1" stopOpacity="0.2" />
+                    <stop offset="100%" stopColor="#10b981" stopOpacity="0.3" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+
+            {/* Floating Blur Circles */}
+            <motion.div
+              className="absolute -left-20 top-10 h-64 w-64 rounded-full bg-primary/20 blur-3xl"
+              animate={{
+                x: [0, 30, 0],
+                y: [0, -20, 0],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <motion.div
+              className="absolute -right-20 top-32 h-80 w-80 rounded-full bg-accent/15 blur-3xl"
+              animate={{
+                x: [0, -30, 0],
+                y: [0, 20, 0],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              }}
+            />
+            <motion.div
+              className="absolute left-1/2 top-20 h-48 w-48 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-2xl"
+              animate={{
+                x: [0, 20, 0],
+                y: [0, -15, 0],
+                scale: [1, 1.15, 1],
+              }}
+              transition={{
+                duration: 7,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.5,
+              }}
+            />
+            <motion.div
+              className="absolute bottom-10 right-1/4 h-56 w-56 rounded-full bg-teal-500/15 blur-3xl"
+              animate={{
+                x: [0, -25, 0],
+                y: [0, 10, 0],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 9,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.5,
+              }}
+            />
+          </div>
+
+          {/* Main Footer Content */}
+          <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 lg:px-8">
+            {/* Glassmorphism Card Container */}
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl lg:p-12">
+              <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+                {/* Company Info */}
+                <div className="space-y-6 lg:col-span-2">
+                  <div className="flex items-center gap-3">
+                    {/* Footer logo with premium styling matching hero */}
+                    <div 
+                      className="relative flex h-14 w-14 items-center justify-center rounded-[18px] bg-gradient-to-br from-primary/10 via-transparent to-accent/10 p-2 backdrop-blur-xl"
                       style={{
-                        borderRadius: 'inherit',
+                        background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        boxShadow: '0 4px 16px rgba(99, 102, 241, 0.2), 0 0 0 1px rgba(99, 102, 241, 0.15)',
                       }}
-                    />
+                    >
+                      {/* Inner logo container */}
+                      <div 
+                        className="relative h-full w-full overflow-hidden rounded-[14px] p-1"
+                        style={{
+                          backgroundColor: '#F8F9FA',
+                          boxShadow: `
+                            inset 0 1px 2px rgba(0, 0, 0, 0.06),
+                            inset 0 -1px 1px rgba(255, 255, 255, 0.8),
+                            inset 0 0 1px rgba(0, 0, 0, 0.04),
+                            0 1px 4px rgba(0, 0, 0, 0.1),
+                            0 1px 2px rgba(0, 0, 0, 0.06)
+                          `,
+                        }}
+                      >
+                        <Image
+                          src="/logo-2.png"
+                          alt="ConOps Tech"
+                          width={56}
+                          height={56}
+                          className="h-full w-full object-contain"
+                          style={{
+                            borderRadius: 'inherit',
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <span className="text-xl font-bold text-white">ConOps Tech</span>
+                  </div>
+                  <p className="max-w-md text-sm leading-relaxed text-white/70">
+                    Delivering modern IT strategy, cloud-native engineering, and automation services for ambitious teams
+                    ready to scale.
+                  </p>
+                  <div className="space-y-2 text-sm text-white/60">
+                    <p className="flex items-center gap-2">
+                      <span className="text-accent">📧</span>
+                      <a href="mailto:mtvvithushan@gmail.com" className="transition hover:text-accent">
+                        mtvvithushan@gmail.com
+                      </a>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <span className="text-accent">📱</span>
+                      <a href="tel:+94755373553" className="transition hover:text-accent">
+                        +94 75 537 3553
+                      </a>
+                    </p>
                   </div>
                 </div>
-                <span className="text-xl font-bold text-white">ConOps Tech</span>
+
+                {/* Services */}
+                <div className="space-y-4">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-white">Services.</h3>
+                  <ul className="space-y-3 text-sm text-white/70">
+                    <li>
+                      <a href="#services" className="transition hover:text-accent">
+                        Cloud Solutions
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#services" className="transition hover:text-accent">
+                        Enterprise Automation
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#services" className="transition hover:text-accent">
+                        IT Strategy & Advisory
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#services" className="transition hover:text-accent">
+                        ERP Solutions
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#services" className="transition hover:text-accent">
+                        IT Support
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#services" className="transition hover:text-accent">
+                        AI Driven Solutions
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Quick Links */}
+                <div className="space-y-4">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-white">Quick Links.</h3>
+                  <ul className="space-y-3 text-sm text-white/70">
+                    <li>
+                      <a href="#services" className="transition hover:text-accent">
+                        Services
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#contact" className="transition hover:text-accent">
+                        Contact Us
+                      </a>
+                    </li>
+                    <li>
+                      <a 
+                        href="https://www.linkedin.com/company/conops-tech/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="transition hover:text-accent"
+                      >
+                        LinkedIn
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <p className="max-w-md text-sm text-white/60">
-                Delivering modern IT strategy, cloud-native engineering, and automation services for ambitious teams
-                ready to scale.
-              </p>
-            </div>
 
-            {/* Quick Links */}
-            <div className="space-y-4">
-              <h3 className="text-sm font-semibold uppercase tracking-[0.3rem] text-white">Quick Links</h3>
-              <ul className="space-y-2 text-sm text-white/60">
-                <li>
-                  <a href="#services" className="transition hover:text-accent">
-                    Services
+              {/* Bottom Section */}
+              <div className="mt-12 flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 sm:flex-row">
+                {/* Copyright */}
+                <p className="text-sm text-white/60">
+                  Copyright © {new Date().getFullYear()} ConOps Tech. All Rights Reserved.
+                </p>
+                
+                {/* Social Links (if needed in future) */}
+                <div className="flex items-center gap-4">
+                  <a 
+                    href="https://www.linkedin.com/company/conops-tech/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/70 transition hover:border-accent/40 hover:bg-accent/10 hover:text-accent"
+                    aria-label="LinkedIn"
+                  >
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
                   </a>
-                </li>
-                <li>
-                  <a href="#contact" className="transition hover:text-accent">
-                    Contact
-                  </a>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
           </div>
-
-          {/* Copyright */}
-          <div className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-white/60">
-            <p>Copyright © {new Date().getFullYear()} ConOps Tech. All Rights Reserved.</p>
-          </div>
-        </div>
         </footer>
       </motion.main>
     </>
