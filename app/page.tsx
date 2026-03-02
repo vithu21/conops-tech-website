@@ -620,69 +620,69 @@ export default function Home() {
           {/* Contact Section */}
           <motion.section
             id="contact"
-            className="grid gap-8 rounded-[32px] border border-white/10 bg-white/5 p-8 shadow-glow backdrop-blur-sm md:grid-cols-[1.2fr_1fr] lg:p-12"
+            className="grid min-w-0 gap-6 rounded-2xl border border-white/10 bg-white/5 p-4 shadow-glow backdrop-blur-sm sm:gap-8 sm:rounded-[32px] sm:p-6 md:grid-cols-[1.2fr_1fr] md:gap-8 md:p-8 lg:p-12"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
           >
-            <div className="space-y-6">
+            <div className="min-w-0 space-y-6">
               <p className="text-xs uppercase tracking-[0.35rem] text-accent">Contact Us</p>
-              <h2 className="text-3xl font-bold text-white sm:text-4xl">
+              <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">
                 Ready to Transform Your IT Operations?
               </h2>
-              <p className="text-base leading-relaxed text-white/70">
+              <p className="text-sm leading-relaxed text-white/70 sm:text-base">
                 Share your requirements and we'll respond with a tailored strategy, timelines, and honest advice.
                 Every engagement starts with a conversation about outcomes, not buzzwords.
               </p>
               <div className="space-y-3 text-sm text-white/70">
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-2 w-2 rounded-full bg-accent" />
+                <div className="flex min-w-0 items-center gap-3">
+                  <span className="inline-flex h-2 w-2 shrink-0 rounded-full bg-accent" />
                   <a 
                     href="tel:+94755373553"
-                    className="text-base transition hover:text-accent"
+                    className="min-w-0 truncate text-base transition hover:text-accent"
                   >
                     Phone · +94 75 537 3553
                   </a>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-2 w-2 rounded-full bg-green-400" />
+                <div className="flex min-w-0 items-center gap-3">
+                  <span className="inline-flex h-2 w-2 shrink-0 rounded-full bg-green-400" />
                   <a 
                     href="https://wa.me/94755373553" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-base transition hover:text-accent"
+                    className="min-w-0 truncate text-base transition hover:text-accent"
                   >
                     WhatsApp · +94 75 537 3553
                   </a>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-2 w-2 rounded-full bg-primary" />
+                <div className="flex min-w-0 items-center gap-3">
+                  <span className="inline-flex h-2 w-2 shrink-0 rounded-full bg-primary" />
                   <a 
-                    href="mailto:mtvvithushan@gmail.com"
-                    className="text-base transition hover:text-accent"
+                    href="mailto:hello.conopstech@gmail.com"
+                    className="min-w-0 truncate text-base transition hover:text-accent sm:overflow-visible sm:whitespace-normal"
                   >
-                    Email · mtvvithushan@gmail.com
+                    Email · hello.conopstech@gmail.com
                   </a>
-        </div>
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-2 w-2 rounded-full bg-blue-400" />
-          <a
+                </div>
+                <div className="flex min-w-0 items-center gap-3">
+                  <span className="inline-flex h-2 w-2 shrink-0 rounded-full bg-blue-400" />
+                  <a
                     href="https://www.linkedin.com/company/conops-tech/" 
-            target="_blank"
-            rel="noopener noreferrer"
-                    className="text-base transition hover:text-accent"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="min-w-0 truncate text-base transition hover:text-accent"
                   >
                     LinkedIn · ConOps Tech
                   </a>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-2 w-2 rounded-full bg-[#1877f2]" />
+                <div className="flex min-w-0 items-center gap-3">
+                  <span className="inline-flex h-2 w-2 shrink-0 rounded-full bg-[#1877f2]" />
                   <a
                     href="https://www.facebook.com/profile.php?id=61586451802847"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-base transition hover:text-accent"
+                    className="min-w-0 truncate text-base transition hover:text-accent"
                   >
                     Facebook · ConOps Tech
                   </a>
@@ -840,8 +840,8 @@ export default function Home() {
                   <div className="space-y-2 text-sm text-white/60">
                     <p className="flex items-center gap-2">
                       <span className="text-accent">📧</span>
-                      <a href="mailto:mtvvithushan@gmail.com" className="transition hover:text-accent">
-                        mtvvithushan@gmail.com
+                      <a href="mailto:hello.conopstech@gmail.com" className="transition hover:text-accent">
+                        hello.conopstech@gmail.com
                       </a>
                     </p>
                     <p className="flex items-center gap-2">

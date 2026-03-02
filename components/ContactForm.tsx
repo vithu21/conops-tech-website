@@ -102,7 +102,7 @@ export default function ContactForm() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "632e7bca-7194-4636-8347-4045978f3256",
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "54d942a8-8283-45ca-bdcc-054d7ebdb25c",
           name: values.name,
           email: values.email,
           phone: combinedPhone,
@@ -130,7 +130,7 @@ export default function ContactForm() {
         const body = encodeURIComponent(
           `Name: ${values.name}\nEmail: ${values.email}\nPhone: ${combinedPhone}\n\nMessage:\n${values.message}`
         );
-        window.location.href = `mailto:mtvvithushan@gmail.com?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:hello.conopstech@gmail.com?subject=${subject}&body=${body}`;
         setStatus("⚠️ Opening your email client. Please send the message manually.");
       }
     } catch (error) {
@@ -140,7 +140,7 @@ export default function ContactForm() {
       const body = encodeURIComponent(
         `Name: ${values.name}\nEmail: ${values.email}\nPhone: ${combinedPhone}\n\nMessage:\n${values.message}`
       );
-      window.location.href = `mailto:mtvvithushan@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:hello.conopstech@gmail.com?subject=${subject}&body=${body}`;
       setStatus("⚠️ Opening your email client. Please send the message manually.");
     } finally {
       setIsSubmitting(false);
@@ -150,16 +150,16 @@ export default function ContactForm() {
   if (!mounted) {
     return (
       <div
-        className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl"
+        className="min-w-0 w-full space-y-4 overflow-x-hidden rounded-2xl border border-white/10 bg-white/5 p-4 shadow-glow backdrop-blur-xl sm:rounded-3xl sm:p-6"
         aria-label="Contact form loading"
       >
         <div className="grid gap-4 md:grid-cols-2">
-          <div className="h-14 rounded-2xl bg-white/5" />
-          <div className="h-14 rounded-2xl bg-white/5" />
+          <div className="h-12 min-w-0 rounded-2xl bg-white/5 sm:h-14" />
+          <div className="h-12 min-w-0 rounded-2xl bg-white/5 sm:h-14" />
         </div>
-        <div className="h-14 rounded-2xl bg-white/5" />
-        <div className="h-36 rounded-2xl bg-white/5" />
-        <div className="h-12 rounded-2xl bg-white/5" />
+        <div className="h-12 min-w-0 rounded-2xl bg-white/5 sm:h-14" />
+        <div className="h-28 min-w-0 rounded-2xl bg-white/5 sm:h-36" />
+        <div className="h-12 min-w-0 rounded-2xl bg-white/5" />
       </div>
     );
   }
@@ -168,13 +168,13 @@ export default function ContactForm() {
     <form
       aria-label="Contact form"
       onSubmit={handleSubmit}
-      className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl"
+      className="min-w-0 w-full space-y-4 overflow-x-hidden rounded-2xl border border-white/10 bg-white/5 p-4 shadow-glow backdrop-blur-xl sm:rounded-3xl sm:p-6"
     >
       <div className="grid gap-4 md:grid-cols-2">
-        <label className="flex flex-col gap-2 text-sm uppercase tracking-[0.24rem] text-white/70">
+        <label className="flex min-w-0 flex-col gap-2 text-xs uppercase tracking-[0.15rem] text-white/70 sm:text-sm sm:tracking-[0.24rem]">
           Name
           <input
-            className="rounded-2xl border border-white/20 bg-transparent px-4 py-3 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/40"
+            className="min-w-0 w-full rounded-2xl border border-white/20 bg-transparent px-4 py-3 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/40"
             type="text"
             name="name"
             value={values.name}
@@ -184,10 +184,10 @@ export default function ContactForm() {
             required
           />
         </label>
-        <label className="flex flex-col gap-2 text-sm uppercase tracking-[0.24rem] text-white/70">
+        <label className="flex min-w-0 flex-col gap-2 text-xs uppercase tracking-[0.15rem] text-white/70 sm:text-sm sm:tracking-[0.24rem]">
           Email
           <input
-            className="rounded-2xl border border-white/20 bg-transparent px-4 py-3 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/40"
+            className="min-w-0 w-full rounded-2xl border border-white/20 bg-transparent px-4 py-3 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/40"
             type="email"
             name="email"
             autoComplete="email"
@@ -199,8 +199,8 @@ export default function ContactForm() {
           />
         </label>
       </div>
-      <div className="flex flex-col gap-2">
-        <label htmlFor="phone-input" className="text-sm uppercase tracking-[0.24rem] text-white/70">
+      <div className="flex min-w-0 flex-col gap-2">
+        <label htmlFor="phone-input" className="text-xs uppercase tracking-[0.15rem] text-white/70 sm:text-sm sm:tracking-[0.24rem]">
           Phone Number (WhatsApp)
         </label>
         <div
@@ -216,7 +216,7 @@ export default function ContactForm() {
                 e.stopPropagation();
                 setDropdownOpen((o) => !o);
               }}
-              className="flex h-full min-h-[52px] items-center gap-1.5 border-r border-white/10 bg-white/5 px-3 py-3 text-left text-base text-white outline-none transition hover:bg-white/10 focus:bg-white/10 sm:px-4"
+              className="flex h-full min-h-[48px] min-w-0 shrink-0 items-center gap-1 border-r border-white/10 bg-white/5 px-2.5 py-3 text-left text-sm text-white outline-none transition hover:bg-white/10 focus:bg-white/10 sm:min-h-[52px] sm:gap-1.5 sm:px-4 sm:text-base"
               aria-haspopup="listbox"
               aria-expanded={dropdownOpen}
               aria-label="Country code"
@@ -228,7 +228,7 @@ export default function ContactForm() {
             </button>
             {dropdownOpen && (
               <div
-                className="absolute left-0 top-full z-50 mt-1 flex max-h-72 min-w-[14rem] flex-col overflow-hidden rounded-xl border border-white/10 bg-[#0f172a]/95 shadow-xl backdrop-blur-xl"
+                className="absolute left-0 top-full z-50 mt-1 flex max-h-72 min-w-[12rem] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-xl border border-white/10 bg-[#0f172a]/95 shadow-xl backdrop-blur-xl sm:min-w-[14rem]"
                 role="listbox"
               >
                 <div className="shrink-0 border-b border-white/10 px-2 py-1.5">
@@ -276,7 +276,7 @@ export default function ContactForm() {
             onChange={(e) => handlePhoneChange(e.target.value)}
             onBlur={handlePhoneBlur}
             placeholder="75 537 3553"
-            className="min-w-0 flex-1 border-0 bg-transparent px-4 py-3 text-base text-white placeholder-white/40 outline-none"
+            className="min-w-0 flex-1 border-0 bg-transparent px-3 py-3 text-base text-white placeholder-white/40 outline-none sm:px-4"
             aria-required
             aria-invalid={!!phoneError}
             aria-describedby={phoneError ? "phone-error" : undefined}
@@ -288,10 +288,10 @@ export default function ContactForm() {
           </p>
         )}
       </div>
-      <label className="flex flex-col gap-2 text-sm uppercase tracking-[0.24rem] text-white/70">
+      <label className="flex min-w-0 flex-col gap-2 text-xs uppercase tracking-[0.15rem] text-white/70 sm:text-sm sm:tracking-[0.24rem]">
         Message
         <textarea
-          className="min-h-[140px] rounded-2xl border border-white/20 bg-transparent px-4 py-3 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/40"
+          className="min-h-[120px] w-full min-w-0 rounded-2xl border border-white/20 bg-transparent px-4 py-3 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/40 sm:min-h-[140px]"
           name="message"
           value={values.message}
           onChange={(event) =>
