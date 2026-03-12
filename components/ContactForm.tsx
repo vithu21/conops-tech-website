@@ -201,7 +201,7 @@ export default function ContactForm() {
       </div>
       <div className="flex min-w-0 flex-col gap-2">
         <label htmlFor="phone-input" className="text-xs uppercase tracking-[0.15rem] text-white/70 sm:text-sm sm:tracking-[0.24rem]">
-          Phone Number (WhatsApp)
+          Phone Number
         </label>
         <div
           ref={dropdownRef}
