@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import ContactForm from "../components/ContactForm";
+import dynamic from "next/dynamic";
+
+const ContactForm = dynamic(() => import("../components/ContactForm"));
 import { motion, type Variants, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { ShieldCheck, Zap, Headphones, TrendingUp, Linkedin, Facebook } from "lucide-react";
@@ -167,16 +169,15 @@ export default function Home() {
                     `,
                   }}
                 >
-        <Image
+                  <Image
                     src="/logo-2.png"
-                    alt="ConOps Tech logo"
-                    width={112}
-                    height={112}
+                    alt="ConOps Tech"
+                    width={256}
+                    height={64}
                     className="h-full w-full object-contain"
                     style={{
                       borderRadius: 'inherit',
                     }}
-          priority
                   />
                 </div>
               </div>
@@ -469,14 +470,14 @@ export default function Home() {
                 >
                   <Image
                     src="/logo-2.png"
-                    alt="ConOps Tech logo"
-                    width={112}
-                    height={112}
+                    width={256}
+                    height={64}
+                    priority
+                    alt="ConOps Tech"
                     className="h-full w-full object-contain"
                     style={{
                       borderRadius: 'inherit',
                     }}
-                    priority
                   />
                 </div>
               </motion.div>
@@ -800,8 +801,8 @@ export default function Home() {
                         <Image
                           src="/logo-2.png"
                           alt="ConOps Tech"
-                          width={56}
-                          height={56}
+                          width={128}
+                          height={32}
                           className="h-full w-full object-contain"
                           style={{
                             borderRadius: 'inherit',
