@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import HeroBubbleBackground from "@/components/HeroBubbleBackground";
+import PageAtmosphere from "@/components/PageAtmosphere";
 import { features, organization, siteName } from "@/lib/site";
 import { services } from "@/lib/services";
 
@@ -121,26 +123,39 @@ export default function HomePage() {
       </AnimatePresence>
 
       <div className="relative isolate min-h-screen overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,.3),_transparent_55%)]" />
-        <div className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,.25),transparent_45%)]" />
+        <PageAtmosphere intensity="full" />
 
         <Header />
 
         <main>
           <div className="mx-auto flex max-w-7xl flex-col gap-20 px-4 py-16 lg:px-8">
             <motion.section
-              className="relative space-y-10"
+              className="relative min-h-[70vh] space-y-10 py-8"
               initial="hidden"
               animate="visible"
               variants={fadeIn}
             >
-              <div className="flex flex-col items-center gap-6 text-center">
-                <div
+              <HeroBubbleBackground />
+
+              <div className="relative z-10 flex flex-col items-center gap-6 text-center">
+                <motion.div
                   className="relative flex h-40 w-40 items-center justify-center rounded-[32px] p-6 shadow-2xl backdrop-blur-2xl"
                   style={{
                     background:
                       "linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%)",
                     border: "1px solid rgba(255, 255, 255, 0.1)",
+                  }}
+                  animate={{
+                    boxShadow: [
+                      "0 8px 32px rgba(99, 102, 241, 0.3), 0 0 0 1px rgba(99, 102, 241, 0.2)",
+                      "0 8px 48px rgba(16, 185, 129, 0.4), 0 0 0 1px rgba(16, 185, 129, 0.3)",
+                      "0 8px 32px rgba(99, 102, 241, 0.3), 0 0 0 1px rgba(99, 102, 241, 0.2)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
                   }}
                 >
                   <div
@@ -156,7 +171,7 @@ export default function HomePage() {
                       className="h-full w-full object-contain"
                     />
                   </div>
-                </div>
+                </motion.div>
                 <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
                   {siteName}
                 </h1>
@@ -165,17 +180,25 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="space-y-8 text-center">
-                <p className="bg-gradient-to-r from-accent to-primary bg-clip-text text-2xl font-bold uppercase tracking-[0.3rem] text-transparent sm:text-3xl lg:text-4xl">
+              <div className="relative z-10 space-y-8 text-center">
+                <motion.p
+                  className="bg-gradient-to-r from-accent to-primary bg-clip-text text-2xl font-bold uppercase tracking-[0.3rem] text-transparent sm:text-3xl lg:text-4xl"
+                  animate={{ opacity: [0.85, 1, 0.85] }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
                   Connecting Your Operations
-                </p>
+                </motion.p>
                 <p className="mx-auto max-w-3xl text-lg text-white/80 sm:text-xl">
                   We deliver cloud infrastructure, automation, and strategic IT
                   services that help your business scale efficiently.
                 </p>
               </div>
 
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <div className="relative z-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-accent px-8 py-4 text-base font-semibold uppercase tracking-[0.2rem] text-white shadow-lg transition hover:scale-105 hover:opacity-90 hover:shadow-xl"
