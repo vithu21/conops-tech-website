@@ -17,7 +17,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/5 bg-[#01030b]/55 backdrop-blur-xl supports-[backdrop-filter]:bg-[#01030b]/40">
+    <header className="fixed inset-x-0 top-0 z-[45] border-b border-white/5 bg-[#01030b]/55 backdrop-blur-xl supports-[backdrop-filter]:bg-[#01030b]/40">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 lg:px-8">
         <Link
           href="/"

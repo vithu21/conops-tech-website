@@ -127,7 +127,7 @@ export default function HomePage() {
 
         <Header />
 
-        <main>
+        <main className="pt-16">
           <div className="mx-auto flex max-w-7xl flex-col gap-20 px-4 py-16 lg:px-8">
             <motion.section
               className="relative min-h-[70vh] space-y-10 py-8"

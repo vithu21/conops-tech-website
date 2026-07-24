@@ -15,7 +15,7 @@ export default function SiteShell({
     <div className="relative isolate min-h-screen overflow-hidden">
       <PageAtmosphere intensity="quiet" />
       <Header />
-      <main className="relative z-10">{children}</main>
+      <main className="relative z-10 pt-16">{children}</main>
       {showFooter ? <Footer /> : null}
     </div>
   );
