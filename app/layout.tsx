@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { JsonLd, organizationGraph } from "@/components/JsonLd";
 import {
-  organization,
+  ogImagePath,
   siteDescription,
   siteName,
   siteTitle,
@@ -21,7 +22,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: siteTitle,
+  title: {
+    default: siteTitle,
+    template: `%s | ${siteName}`,
+  },
   description: siteDescription,
   alternates: {
     canonical: "/",
@@ -33,47 +37,25 @@ export const metadata: Metadata = {
     title: siteTitle,
     description: siteDescription,
     locale: "en_US",
+    images: [
+      {
+        url: ogImagePath,
+        width: 1200,
+        height: 630,
+        alt: siteName,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
+    images: [ogImagePath],
   },
   robots: {
     index: true,
     follow: true,
   },
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      name: siteName,
-      url: siteUrl,
-      logo: `${siteUrl}/logo-2.png`,
-      email: organization.email,
-      telephone: organization.telephone,
-      sameAs: organization.sameAs,
-      contactPoint: {
-        "@type": "ContactPoint",
-        email: organization.email,
-        telephone: organization.telephone,
-        contactType: "customer service",
-      },
-    },
-    {
-      "@type": "WebSite",
-      name: siteName,
-      url: siteUrl,
-      description: siteDescription,
-      publisher: {
-        "@type": "Organization",
-        name: siteName,
-      },
-    },
-  ],
 };
 
 export default function RootLayout({
@@ -87,10 +69,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#01030b] text-white`}
         suppressHydrationWarning
       >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={organizationGraph()} />
         {children}
       </body>
     </html>

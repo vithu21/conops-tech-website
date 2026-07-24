@@ -1,13 +1,43 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/site";
+import { services } from "@/lib/services";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const lastModified = new Date();
+
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: siteUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      lastModified,
+      changeFrequency: "weekly",
       priority: 1,
     },
+    {
+      url: `${siteUrl}/about`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/services`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/contact`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
   ];
+
+  const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
+    url: `${siteUrl}/services/${service.slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes];
 }
