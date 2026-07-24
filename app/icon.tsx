@@ -1,9 +1,14 @@
+import { readFile } from "fs/promises";
+import { join } from "path";
 import { ImageResponse } from "next/og";
 
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
-export default function Icon() {
+export default async function Icon() {
+  const logoData = await readFile(join(process.cwd(), "public", "logo-2.png"));
+  const logoSrc = `data:image/png;base64,${logoData.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -13,15 +18,18 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#01030b",
+          background: "#F8F9FA",
           borderRadius: 6,
-          color: "#10b981",
-          fontSize: 14,
-          fontWeight: 700,
-          letterSpacing: "-0.02em",
         }}
       >
-        CT
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={logoSrc}
+          width={28}
+          height={28}
+          alt=""
+          style={{ objectFit: "contain" }}
+        />
       </div>
     ),
     { ...size },
